@@ -9,6 +9,9 @@ import base64
 from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib  
+matplotlib.rc('font', family='SimHei')
+
 
 
 url = st.text_input("请输入url")
@@ -46,7 +49,7 @@ if graph_type == '词云':
     words = list(words_count.keys())
     counts = list(words_count.values())
     #创建词云
-    wordcloud = WordCloud(width=800,height=800,background_color='white').generate_from_frequencies(dict(zip(words,counts)))
+    wordcloud = WordCloud(font_path='SimHei.ttf',width=800,height=800,background_color='white').generate_from_frequencies(dict(zip(words,counts)))
     #在matplotlib中显示词云
     fig = plt.figure(figsize=(8, 8), facecolor=None)
     plt.imshow(wordcloud)
