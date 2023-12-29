@@ -51,6 +51,8 @@ if url:
         wordcloud.render("wordcloud.html")  
         # 在Streamlit应用中显示词云图
         st.components.v1.html(open('wordcloud.html', 'r', encoding='utf-8').read(), height=600,width=850)
+        st.subheader('词频排名前20的词汇')
+        st.write('', ', '.join(words_count.keys()))
     elif graph_type == '条形图':
         bar = Bar()  
         bar.add_xaxis(list(words_count.keys()))  
@@ -59,6 +61,8 @@ if url:
         bar.render("bar_chart.html") 
         # 在Streamlit应用中显示条形图  
         st.components.v1.html(open('bar_chart.html', 'r', encoding='utf-8').read(), height=600,width=850) 
+        st.subheader('词频排名前20的词汇')
+        st.write('', ', '.join(words_count.keys()))
     elif graph_type == '饼图':
         pie = Pie()  
         pie.add("", [list(z) for z in zip(words_count.keys(), words_count.values())])  
@@ -66,6 +70,8 @@ if url:
         pie.render("pie_chart.html")  
         # 在Streamlit应用中显示饼图  
         st.components.v1.html(open('pie_chart.html', 'r', encoding='utf-8').read(), height=600,width=850)
+        st.subheader('词频排名前20的词汇')
+        st.write('', ', '.join(words_count.keys()))
     elif graph_type == '散点图':
         scatter = Scatter()  
         scatter.add_xaxis(list(words_count.keys()))  
@@ -74,6 +80,8 @@ if url:
         scatter.render("scatter_chart.html")   
         # 在Streamlit应用中显示散点图  
         st.components.v1.html(open('scatter_chart.html', 'r', encoding='utf-8').read(), height=600,width=850) 
+        st.subheader('词频排名前20的词汇')
+        st.write('', ', '.join(words_count.keys()))
     elif graph_type == '横向柱状图':
         bar = Bar()
         bar.add_xaxis(list(words_count.keys()))
@@ -83,6 +91,8 @@ if url:
         bar.render('histogram_chart.html')
         # 在Streamlit应用中显示直方图  
         st.components.v1.html(open('histogram_chart.html', 'r', encoding='utf-8').read(), height=600,width=850)
+        st.subheader('词频排名前20的词汇')
+        st.write('', ', '.join(words_count.keys()))
     elif graph_type == '线图':
         # 将数据转化为两个列表，一个为x轴，一个为y轴  
         x_data = list(words_count.keys())  
@@ -97,11 +107,13 @@ if url:
         line_chart.render("line_chart.html")
         # 在Streamlit应用中显示线图  
         st.components.v1.html(open('line_chart.html', 'r', encoding='utf-8').read(), height=600,width=850)
+        st.subheader('词频排名前20的词汇')
+        st.write('', ', '.join(words_count.keys()))
     elif graph_type == '漏斗图': 
         funnel = Funnel()
         funnel.add("", list(words_count.items()))
         funnel.render('funnel.html')
         # 在Streamlit应用中显示线图  
         st.components.v1.html(open('funnel.html', 'r', encoding='utf-8').read(), height=600,width=850)
-st.subheader('词频排名前20的词汇')
-st.write('', ', '.join(words_count.keys()))
+        st.subheader('词频排名前20的词汇')
+        st.write('', ', '.join(words_count.keys()))
